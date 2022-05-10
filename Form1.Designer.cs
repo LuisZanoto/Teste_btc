@@ -32,6 +32,7 @@ namespace Teste
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Btn_Arq = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -206,7 +207,7 @@ namespace Teste
             this.txtSaldoUini.Name = "txtSaldoUini";
             this.txtSaldoUini.Size = new System.Drawing.Size(62, 25);
             this.txtSaldoUini.TabIndex = 22;
-            this.txtSaldoUini.Text = "2000,00";
+            this.txtSaldoUini.Text = "500,00";
             this.txtSaldoUini.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtBtc_Conv
@@ -594,18 +595,28 @@ namespace Teste
             // 
             // chart1
             // 
+            this.chart1.BorderlineWidth = 3;
+            this.chart1.BorderSkin.BorderWidth = 2;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(46, 381);
+            this.chart1.Location = new System.Drawing.Point(12, 392);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "BTC";
+            series1.SmartLabelStyle.CalloutLineWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Media";
+            series2.SmartLabelStyle.CalloutLineWidth = 2;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(465, 130);
-            this.chart1.TabIndex = 5;
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(794, 229);
+            this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
             // 
             // Form1
@@ -613,7 +624,7 @@ namespace Teste
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(847, 540);
+            this.ClientSize = new System.Drawing.Size(847, 633);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnIniciar);

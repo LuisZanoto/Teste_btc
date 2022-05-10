@@ -4,6 +4,8 @@ using System.Globalization;
 using System.IO;
 using CsvHelper.Configuration;
 using CsvHelper;
+using System.Data;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Teste
 {
@@ -15,8 +17,11 @@ namespace Teste
         //int[] array1 = new int[5];
         double[] V_buffer = new double[50];
         double[] Saida = new double[10];
+        DataTable dt_raw = new DataTable();        
+        
         int Ncompras = 0;
         int Nvendas = 0;
+        int Nlinhas = 0;
 
         public Form1()
         {
@@ -26,8 +31,10 @@ namespace Teste
         private void Form1_Load(object sender, EventArgs e)
         {
             T_buffer = Convert.ToInt32(txtBuffer.Text);
-            
-           
+            dt_raw.Columns.Add("Linha", typeof(Int32));
+            dt_raw.Columns.Add("Valor", typeof(double));
+            dt_raw.Columns.Add("Media", typeof(double));
+
         }
 
         private void Btn_Arq_Click(object sender, EventArgs e)
@@ -79,6 +86,8 @@ namespace Teste
             Saida[3] = g2;// Saldo BTC
             Ncompras = 0;
             Nvendas = 0;
+            Nlinhas = 0;
+            dt_raw.Clear();
         }
 
 
@@ -96,7 +105,8 @@ namespace Teste
         }
         private void Calculos(double media_loc, double valor, int n_linha)
         {            
-            double volume = Convert.ToDouble(txtVol.Text);           
+            double volume = Convert.ToDouble(txtVol.Text);
+            dt_raw.Rows.Add(n_linha, valor, media_loc);// adiciona linha, valor media
 
             if (valor < media_loc)
             {
@@ -132,6 +142,8 @@ namespace Teste
             // saldosoma + textBox1
             double sf = Convert.ToDouble(textBox1.Text)  - Convert.ToDouble(txtSaldoSoma.Text);
             txtSaldoFinal.Text = sf.ToString();
+            Nlinhas = Convert.ToInt32(textBox8.Text);
+            grafico();
         }
 
 
@@ -139,6 +151,7 @@ namespace Teste
         {
             int i = 0; // controle do buffer
             int l = 0; // controle linha
+
             var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
                 HasHeaderRecord = false,
@@ -167,47 +180,33 @@ namespace Teste
                 }
                 
                 Calculos(C_Media(V_buffer), valor, l);
-
+                
             }
         }
 
-        //private void grafico()
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt.Columns.Add("X_Value", typeof(double));
-        //    dt.Columns.Add("Y_Value", typeof(double));
-        //    dt.Columns.Add("Y_Value2", typeof(double));
+        private void grafico()
+        {
 
-        //    //loop rows
-        //    int maximo = dgvGela1.Rows.Count;
-        //    int ref_temp;
-        //    int temp_lida;
-        //    for (int x = 1; x <= maximo; x++)
-        //    {
-        //        ref_temp = int.Parse(dgvGela1[3, x - 1].Value.ToString());
-        //        temp_lida = int.Parse(dgvGela1[5, x - 1].Value.ToString());
-        //        dt.Rows.Add(x, ref_temp, temp_lida);
-        //    }
 
-        //    chart1.DataSource = dt;
-        //    chart1.Series[0].XValueMember = "X_Value";
-        //    chart1.Series[0].YValueMembers = "Y_Value";
+            chart1.DataSource = dt_raw;
+            chart1.Series[0].XValueMember = "Linha";
+            chart1.Series[0].YValueMembers = "Valor";
 
-        //    chart1.Series[1].XValueMember = "X_Value";
-        //    chart1.Series[1].YValueMembers = "Y_Value2";
-        //    //
-        //    chart1.Series[0].ChartType = SeriesChartType.Line;
-        //    chart1.Series[0].Color = System.Drawing.Color.DarkBlue;
-        //    //
-        //    chart1.Series[1].ChartType = SeriesChartType.Line;
-        //    chart1.Series[1].Color = System.Drawing.Color.Red;
-        //    //
-        //    chart1.Series[0].BorderWidth = 4;
-        //    chart1.Series[1].BorderWidth = 4;
+            chart1.Series[1].XValueMember = "Linha";
+            chart1.Series[1].YValueMembers = "Media";
+            //
+            chart1.Series[0].ChartType = SeriesChartType.Line;
+            chart1.Series[0].Color = System.Drawing.Color.DarkBlue;
+            //
+            chart1.Series[1].ChartType = SeriesChartType.Line;
+            chart1.Series[1].Color = System.Drawing.Color.Red;
+            //
+            chart1.Series[0].BorderWidth = 1;
+            chart1.Series[1].BorderWidth = 1;
 
-        //    chart1.DataBind();
+            chart1.DataBind();
 
-        //}
+        }
 
 
         private void Le_linha(int l1)
@@ -248,5 +247,7 @@ namespace Teste
         {
             T_buffer = Convert.ToInt32(txtBuffer.Text);
         }
+
+
     }
 }
