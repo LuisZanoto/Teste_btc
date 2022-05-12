@@ -141,7 +141,7 @@ namespace Teste
             this.txtArq.Name = "txtArq";
             this.txtArq.Size = new System.Drawing.Size(425, 38);
             this.txtArq.TabIndex = 1;
-            this.txtArq.Text = "";
+            this.txtArq.Text = "F:\\2022\\Binance\\Get-BTC\\1d_5min.csv";
             // 
             // groupBox2
             // 

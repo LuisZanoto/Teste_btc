@@ -15,10 +15,12 @@ namespace Teste
         // Variaveis globais
         int T_buffer;
         //int[] array1 = new int[5];
-        double[] V_buffer = new double[50];
+        double[] V_buffer = new double[500];
         double[] Saida = new double[10];
-        DataTable dt_raw = new DataTable();        
-        
+        DataTable dt_raw = new DataTable();
+        double max_valor = 0; 
+        double min_valor = 0; 
+
         int Ncompras = 0;
         int Nvendas = 0;
         int Nlinhas = 0;
@@ -48,7 +50,7 @@ namespace Teste
                 openFileDialog.InitialDirectory = @"C:\";
                 openFileDialog.Filter = "xlsx files (*.csv) | *.csv";
                 openFileDialog.FilterIndex = 1;
-                
+
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
@@ -68,7 +70,7 @@ namespace Teste
                 Le_linha(1);
                 Atualiza();
             }
-           
+
         }
         private void Atualiza()
         {
@@ -80,7 +82,7 @@ namespace Teste
             double i2 = h2 + f2;
             txtBtc_Conv.Text = (c2 * d2).ToString();
             txtBTC_Cota.Text = (h2).ToString();
-            
+
             txtSaldoSoma.Text = (i2).ToString();
             Saida[4] = f2; // Saldo U$
             Saida[3] = g2;// Saldo BTC
@@ -94,7 +96,7 @@ namespace Teste
         private double C_Media(double[] V_buffer_c)
         {
             double soma = 0;
-            
+
             for (int a = 1; a <= T_buffer; a++)
             {
                 soma = soma + V_buffer_c[a];
@@ -104,18 +106,21 @@ namespace Teste
             return media;
         }
         private void Calculos(double media_loc, double valor, int n_linha)
-        {            
+        {
             double volume = Convert.ToDouble(txtVol.Text);
-            dt_raw.Rows.Add(n_linha, valor, media_loc);// adiciona linha, valor media
+            double difer = 0;
+            dt_raw.Rows.Add(n_linha, valor, media_loc);// adiciona linha, valor media            
 
-            if (valor < media_loc)
+            difer = media_loc - valor;
+
+            if (difer >= 200.0)
             {
                 //Compra xx BTC por cotação atual de U$
                 Saida[4] = Saida[4] - (volume * valor);
                 Saida[3] = Saida[3] + volume;
                 Ncompras++;
             }
-            if (valor > media_loc)
+            if (difer <= -200.0)
             {
                 //Vende xx BTC por cotação atual de U$
                 Saida[4] = Saida[4] + (volume * valor);
@@ -140,10 +145,13 @@ namespace Teste
         private void Finaliza()
         {
             // saldosoma + textBox1
-            double sf = Convert.ToDouble(textBox1.Text)  - Convert.ToDouble(txtSaldoSoma.Text);
+            double sf = Convert.ToDouble(textBox1.Text) - Convert.ToDouble(txtSaldoSoma.Text);
             txtSaldoFinal.Text = sf.ToString();
             Nlinhas = Convert.ToInt32(textBox8.Text);
-            grafico();
+            max_valor = Convert.ToDouble (dt_raw.Compute("MAX([Valor])", ""));
+            min_valor = Convert.ToDouble(dt_raw.Compute("MIN([Valor])", ""));
+
+            grafico(max_valor, min_valor);
         }
 
 
@@ -161,9 +169,9 @@ namespace Teste
             };
 
             var streamReader = File.OpenText(txtArq.Text);
-           
+
             var csvReader = new CsvReader(streamReader, csvConfig);
-            
+
 
             while (csvReader.Read())
             {
@@ -173,18 +181,18 @@ namespace Teste
                 txtLinha.Text = l.ToString();
                 double valor = Convert.ToDouble(v_open);
                 V_buffer[i] = valor;
-                
+
                 if (i >= T_buffer)
                 {
                     i = 0;
                 }
-                
+
                 Calculos(C_Media(V_buffer), valor, l);
-                
+
             }
         }
 
-        private void grafico()
+        private void grafico(double max_valor, double min_valor)
         {
 
 
@@ -203,6 +211,9 @@ namespace Teste
             //
             chart1.Series[0].BorderWidth = 1;
             chart1.Series[1].BorderWidth = 1;
+            //
+            chart1.ChartAreas[0].AxisY.Maximum = max_valor;
+            chart1.ChartAreas[0].AxisY.Minimum = min_valor;
 
             chart1.DataBind();
 
@@ -211,7 +222,7 @@ namespace Teste
 
         private void Le_linha(int l1)
         {
-          
+
             var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
                 HasHeaderRecord = false,
@@ -229,7 +240,7 @@ namespace Teste
                 txtCotacao.Text = v_open.ToString();
                 txtLinha.Text = l1.ToString();
 
-                break;              
+                break;
 
             }
 
@@ -247,7 +258,6 @@ namespace Teste
         {
             T_buffer = Convert.ToInt32(txtBuffer.Text);
         }
-
 
     }
 }
