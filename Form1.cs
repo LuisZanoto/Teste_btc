@@ -19,7 +19,8 @@ namespace Teste
         double[] Saida = new double[10];
         DataTable dt_raw = new DataTable();
         double max_valor = 0; 
-        double min_valor = 0; 
+        double min_valor = 0;
+        double histerese = 0;
 
         int Ncompras = 0;
         int Nvendas = 0;
@@ -74,6 +75,9 @@ namespace Teste
         }
         private void Atualiza()
         {
+            //Atualiza valores campos
+            T_buffer = Convert.ToInt32(txtBuffer.Text);
+            histerese = Convert.ToInt32(txtHiste.Text);
             double d2 = Convert.ToDouble(txtVol.Text);
             double c2 = Convert.ToDouble(txtCotacao.Text);
             double g2 = Convert.ToDouble(txtSaldoBTCini.Text);
@@ -113,19 +117,27 @@ namespace Teste
 
             difer = media_loc - valor;
 
-            if (difer >= 200.0)
+            if (difer > histerese)
             {
-                //Compra xx BTC por cotação atual de U$
-                Saida[4] = Saida[4] - (volume * valor);
-                Saida[3] = Saida[3] + volume;
-                Ncompras++;
+                if (Saida[4] > 100)
+                {
+                    //Compra xx BTC por cotação atual de U$
+                    Saida[4] = Saida[4] - (volume * valor);
+                    Saida[3] = Saida[3] + volume;
+                    Ncompras++;
+                }
+                
             }
-            if (difer <= -200.0)
+            if (difer < - histerese)
             {
-                //Vende xx BTC por cotação atual de U$
-                Saida[4] = Saida[4] + (volume * valor);
-                Saida[3] = Saida[3] - volume;
-                Nvendas++;
+                if (Saida[3] > 0.001)
+                {
+                    //Vende xx BTC por cotação atual de U$
+                    Saida[4] = Saida[4] + (volume * valor);
+                    Saida[3] = Saida[3] - volume;
+                    Nvendas++;
+                }
+                
             }
             // Ultima Cotação
             textBox7.Text = valor.ToString();
@@ -150,6 +162,11 @@ namespace Teste
             Nlinhas = Convert.ToInt32(textBox8.Text);
             max_valor = Convert.ToDouble (dt_raw.Compute("MAX([Valor])", ""));
             min_valor = Convert.ToDouble(dt_raw.Compute("MIN([Valor])", ""));
+            int transac = Ncompras + Nlinhas;
+            double perc_tx = transac * Convert.ToDouble(txt_TX.Text);
+            txtTXRe.Text = perc_tx.ToString() + " %";
+            double rasc_sf_tx = sf - ((sf * perc_tx)/100);
+            txtSaldo_Taxas.Text = rasc_sf_tx.ToString();
 
             grafico(max_valor, min_valor);
         }

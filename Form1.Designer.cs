@@ -81,6 +81,16 @@ namespace Teste
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.txtSaldo_Taxas = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txt_TX = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtHiste = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtTXRe = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -100,6 +110,12 @@ namespace Teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.txtHiste);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.txt_TX);
+            this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.txtBuffer);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtArq);
@@ -108,38 +124,38 @@ namespace Teste
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(602, 65);
+            this.groupBox1.Size = new System.Drawing.Size(710, 65);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuração :";
             // 
             // txtBuffer
             // 
-            this.txtBuffer.Location = new System.Drawing.Point(569, 27);
+            this.txtBuffer.Location = new System.Drawing.Point(357, 34);
             this.txtBuffer.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuffer.Name = "txtBuffer";
             this.txtBuffer.Size = new System.Drawing.Size(23, 22);
             this.txtBuffer.TabIndex = 5;
-            this.txtBuffer.Text = "5";
+            this.txtBuffer.Text = "50";
             this.txtBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBuffer.TextChanged += new System.EventHandler(this.txtBuffer_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(497, 28);
+            this.label2.Location = new System.Drawing.Point(354, 17);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Qtd Buffer :";
+            this.label2.Text = "Buffer :";
             // 
             // txtArq
             // 
             this.txtArq.Location = new System.Drawing.Point(69, 18);
             this.txtArq.Margin = new System.Windows.Forms.Padding(2);
             this.txtArq.Name = "txtArq";
-            this.txtArq.Size = new System.Drawing.Size(425, 38);
+            this.txtArq.Size = new System.Drawing.Size(268, 38);
             this.txtArq.TabIndex = 1;
             this.txtArq.Text = "F:\\2022\\Binance\\Get-BTC\\1d_5min.csv";
             // 
@@ -197,7 +213,7 @@ namespace Teste
             this.txtSaldoBTCini.Name = "txtSaldoBTCini";
             this.txtSaldoBTCini.Size = new System.Drawing.Size(54, 22);
             this.txtSaldoBTCini.TabIndex = 23;
-            this.txtSaldoBTCini.Text = "0,04";
+            this.txtSaldoBTCini.Text = "0,05";
             this.txtSaldoBTCini.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtSaldoUini
@@ -330,7 +346,7 @@ namespace Teste
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(613, 27);
+            this.btnIniciar.Location = new System.Drawing.Point(619, 80);
             this.btnIniciar.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(78, 29);
@@ -341,6 +357,11 @@ namespace Teste
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtTXRe);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.txtSaldo_Taxas);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.btnIniciar);
             this.groupBox3.Controls.Add(this.txtSaldoFinal);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.txtNVendas);
@@ -375,7 +396,7 @@ namespace Teste
             // txtSaldoFinal
             // 
             this.txtSaldoFinal.BackColor = System.Drawing.Color.Aqua;
-            this.txtSaldoFinal.Location = new System.Drawing.Point(169, 87);
+            this.txtSaldoFinal.Location = new System.Drawing.Point(265, 87);
             this.txtSaldoFinal.Margin = new System.Windows.Forms.Padding(2);
             this.txtSaldoFinal.Name = "txtSaldoFinal";
             this.txtSaldoFinal.Size = new System.Drawing.Size(99, 22);
@@ -385,7 +406,7 @@ namespace Teste
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(153, 68);
+            this.label20.Location = new System.Drawing.Point(249, 68);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(87, 13);
@@ -622,6 +643,108 @@ namespace Teste
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
             // 
+            // txtSaldo_Taxas
+            // 
+            this.txtSaldo_Taxas.BackColor = System.Drawing.Color.Aqua;
+            this.txtSaldo_Taxas.Location = new System.Drawing.Point(394, 87);
+            this.txtSaldo_Taxas.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSaldo_Taxas.Name = "txtSaldo_Taxas";
+            this.txtSaldo_Taxas.Size = new System.Drawing.Size(99, 22);
+            this.txtSaldo_Taxas.TabIndex = 33;
+            this.txtSaldo_Taxas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(378, 68);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(124, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Saldo Final - Taxas U$ :";
+            // 
+            // txt_TX
+            // 
+            this.txt_TX.Location = new System.Drawing.Point(426, 34);
+            this.txt_TX.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_TX.Name = "txt_TX";
+            this.txt_TX.Size = new System.Drawing.Size(32, 22);
+            this.txt_TX.TabIndex = 7;
+            this.txt_TX.Text = "0,1";
+            this.txt_TX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(423, 17);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(95, 13);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Taxas/Transação :";
+            // 
+            // txtHiste
+            // 
+            this.txtHiste.Location = new System.Drawing.Point(603, 32);
+            this.txtHiste.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHiste.Name = "txtHiste";
+            this.txtHiste.Size = new System.Drawing.Size(36, 22);
+            this.txtHiste.TabIndex = 9;
+            this.txtHiste.Text = "200";
+            this.txtHiste.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(579, 17);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(60, 13);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Histerese :";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label24.Location = new System.Drawing.Point(462, 35);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(20, 19);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "%";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label25.Location = new System.Drawing.Point(572, 34);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(27, 19);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "U$";
+            // 
+            // txtTXRe
+            // 
+            this.txtTXRe.BackColor = System.Drawing.Color.Aqua;
+            this.txtTXRe.Location = new System.Drawing.Point(169, 87);
+            this.txtTXRe.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTXRe.Name = "txtTXRe";
+            this.txtTXRe.Size = new System.Drawing.Size(52, 22);
+            this.txtTXRe.TabIndex = 34;
+            this.txtTXRe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(164, 68);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(40, 13);
+            this.label26.TabIndex = 35;
+            this.label26.Text = "Taxas :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,7 +753,6 @@ namespace Teste
             this.ClientSize = new System.Drawing.Size(921, 629);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -700,6 +822,16 @@ namespace Teste
         private System.Windows.Forms.TextBox txtSaldoFinal;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TextBox txt_TX;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtSaldo_Taxas;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtHiste;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtTXRe;
+        private System.Windows.Forms.Label label26;
     }
 }
 
