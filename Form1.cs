@@ -47,8 +47,8 @@ namespace Teste
             bool ok_ = false;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-
-                openFileDialog.InitialDirectory = @"C:\";
+                string iniDir = Directory.GetCurrentDirectory();
+                openFileDialog.InitialDirectory = iniDir;
                 openFileDialog.Filter = "xlsx files (*.csv) | *.csv";
                 openFileDialog.FilterIndex = 1;
 
