@@ -86,13 +86,16 @@ namespace Teste
             double i2 = h2 + f2;
             txtBtc_Conv.Text = (c2 * d2).ToString();
             txtBTC_Cota.Text = (h2).ToString();
-
             txtSaldoSoma.Text = (i2).ToString();
             Saida[4] = f2; // Saldo U$
             Saida[3] = g2;// Saldo BTC
             Ncompras = 0;
             Nvendas = 0;
             Nlinhas = 0;
+            for (int i = 0; i < T_buffer; i++)// atualiza buffer com cotação atual
+            {
+                V_buffer[i] = c2;
+            }
             dt_raw.Clear();
         }
 
@@ -117,9 +120,9 @@ namespace Teste
 
             difer = media_loc - valor;
 
-            if (difer > histerese)
+            if (difer > histerese) // histerese = minimo valor negociação U$
             {
-                if (Saida[4] > 100)
+                if (Saida[4] > 100) // Saida[4] = Saldo em U$
                 {
                     //Compra xx BTC por cotação atual de U$
                     Saida[4] = Saida[4] - (volume * valor);
@@ -128,9 +131,9 @@ namespace Teste
                 }
                 
             }
-            if (difer < - histerese)
+            if (difer < - histerese) // histerese = minimo valor negociação U$
             {
-                if (Saida[3] > 0.001)
+                if (Saida[3] > 0.001) // Saida[4] = Saldo em U$
                 {
                     //Vende xx BTC por cotação atual de U$
                     Saida[4] = Saida[4] + (volume * valor);
