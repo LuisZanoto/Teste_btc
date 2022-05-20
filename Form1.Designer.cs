@@ -33,9 +33,16 @@ namespace Teste
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Btn_Arq = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtHiste = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txt_TX = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.txtBuffer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtArq = new System.Windows.Forms.RichTextBox();
@@ -58,6 +65,10 @@ namespace Teste
             this.label10 = new System.Windows.Forms.Label();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtTXRe = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtSaldo_Taxas = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.txtSaldoFinal = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtNVendas = new System.Windows.Forms.TextBox();
@@ -81,16 +92,6 @@ namespace Teste
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.txtSaldo_Taxas = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txt_TX = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtHiste = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtTXRe = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,6 +129,68 @@ namespace Teste
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuração :";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label25.Location = new System.Drawing.Point(572, 34);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(27, 19);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "U$";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label24.Location = new System.Drawing.Point(462, 35);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(20, 19);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "%";
+            // 
+            // txtHiste
+            // 
+            this.txtHiste.Location = new System.Drawing.Point(603, 32);
+            this.txtHiste.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHiste.Name = "txtHiste";
+            this.txtHiste.Size = new System.Drawing.Size(36, 22);
+            this.txtHiste.TabIndex = 9;
+            this.txtHiste.Text = "200";
+            this.txtHiste.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(579, 17);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(60, 13);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Histerese :";
+            // 
+            // txt_TX
+            // 
+            this.txt_TX.Location = new System.Drawing.Point(426, 34);
+            this.txt_TX.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_TX.Name = "txt_TX";
+            this.txt_TX.Size = new System.Drawing.Size(32, 22);
+            this.txt_TX.TabIndex = 7;
+            this.txt_TX.Text = "0,1";
+            this.txt_TX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(423, 17);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(95, 13);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Taxas/Transação :";
             // 
             // txtBuffer
             // 
@@ -393,6 +456,46 @@ namespace Teste
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultado :";
             // 
+            // txtTXRe
+            // 
+            this.txtTXRe.BackColor = System.Drawing.Color.Aqua;
+            this.txtTXRe.Location = new System.Drawing.Point(169, 87);
+            this.txtTXRe.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTXRe.Name = "txtTXRe";
+            this.txtTXRe.Size = new System.Drawing.Size(52, 22);
+            this.txtTXRe.TabIndex = 34;
+            this.txtTXRe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(164, 68);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(40, 13);
+            this.label26.TabIndex = 35;
+            this.label26.Text = "Taxas :";
+            // 
+            // txtSaldo_Taxas
+            // 
+            this.txtSaldo_Taxas.BackColor = System.Drawing.Color.Aqua;
+            this.txtSaldo_Taxas.Location = new System.Drawing.Point(394, 87);
+            this.txtSaldo_Taxas.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSaldo_Taxas.Name = "txtSaldo_Taxas";
+            this.txtSaldo_Taxas.Size = new System.Drawing.Size(99, 22);
+            this.txtSaldo_Taxas.TabIndex = 33;
+            this.txtSaldo_Taxas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(378, 68);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(124, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Saldo Final - Taxas U$ :";
+            // 
             // txtSaldoFinal
             // 
             this.txtSaldoFinal.BackColor = System.Drawing.Color.Aqua;
@@ -627,123 +730,26 @@ namespace Teste
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.Legend = "Legend1";
             series1.Name = "BTC";
             series1.SmartLabelStyle.CalloutLineWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series2.Legend = "Legend1";
             series2.Name = "Media";
             series2.SmartLabelStyle.CalloutLineWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "C_V";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(899, 318);
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
-            // 
-            // txtSaldo_Taxas
-            // 
-            this.txtSaldo_Taxas.BackColor = System.Drawing.Color.Aqua;
-            this.txtSaldo_Taxas.Location = new System.Drawing.Point(394, 87);
-            this.txtSaldo_Taxas.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSaldo_Taxas.Name = "txtSaldo_Taxas";
-            this.txtSaldo_Taxas.Size = new System.Drawing.Size(99, 22);
-            this.txtSaldo_Taxas.TabIndex = 33;
-            this.txtSaldo_Taxas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(378, 68);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(124, 13);
-            this.label21.TabIndex = 32;
-            this.label21.Text = "Saldo Final - Taxas U$ :";
-            // 
-            // txt_TX
-            // 
-            this.txt_TX.Location = new System.Drawing.Point(426, 34);
-            this.txt_TX.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_TX.Name = "txt_TX";
-            this.txt_TX.Size = new System.Drawing.Size(32, 22);
-            this.txt_TX.TabIndex = 7;
-            this.txt_TX.Text = "0,1";
-            this.txt_TX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(423, 17);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(95, 13);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Taxas/Transação :";
-            // 
-            // txtHiste
-            // 
-            this.txtHiste.Location = new System.Drawing.Point(603, 32);
-            this.txtHiste.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHiste.Name = "txtHiste";
-            this.txtHiste.Size = new System.Drawing.Size(36, 22);
-            this.txtHiste.TabIndex = 9;
-            this.txtHiste.Text = "200";
-            this.txtHiste.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(579, 17);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(60, 13);
-            this.label23.TabIndex = 8;
-            this.label23.Text = "Histerese :";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label24.Location = new System.Drawing.Point(462, 35);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(20, 19);
-            this.label24.TabIndex = 10;
-            this.label24.Text = "%";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label25.Location = new System.Drawing.Point(572, 34);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(27, 19);
-            this.label25.TabIndex = 11;
-            this.label25.Text = "U$";
-            // 
-            // txtTXRe
-            // 
-            this.txtTXRe.BackColor = System.Drawing.Color.Aqua;
-            this.txtTXRe.Location = new System.Drawing.Point(169, 87);
-            this.txtTXRe.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTXRe.Name = "txtTXRe";
-            this.txtTXRe.Size = new System.Drawing.Size(52, 22);
-            this.txtTXRe.TabIndex = 34;
-            this.txtTXRe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(164, 68);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(40, 13);
-            this.label26.TabIndex = 35;
-            this.label26.Text = "Taxas :";
             // 
             // Form1
             // 

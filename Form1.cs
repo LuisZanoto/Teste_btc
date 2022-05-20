@@ -37,6 +37,7 @@ namespace Teste
             dt_raw.Columns.Add("Linha", typeof(Int32));
             dt_raw.Columns.Add("Valor", typeof(double));
             dt_raw.Columns.Add("Media", typeof(double));
+            dt_raw.Columns.Add("C_V", typeof(double));
 
         }
 
@@ -112,11 +113,11 @@ namespace Teste
             double media = (soma / T_buffer);
             return media;
         }
-        private void Calculos(double media_loc, double valor, int n_linha)
+        private void Calculos(double media_loc, double valor, int n_linha, double C_V)
         {
             double volume = Convert.ToDouble(txtVol.Text);
             double difer = 0;
-            dt_raw.Rows.Add(n_linha, valor, media_loc);// adiciona linha, valor media            
+            
 
             difer = media_loc - valor;
 
@@ -128,6 +129,7 @@ namespace Teste
                     Saida[4] = Saida[4] - (volume * valor);
                     Saida[3] = Saida[3] + volume;
                     Ncompras++;
+                    C_V = C_V - histerese; // enxerga compra e venda
                 }
                 
             }
@@ -139,6 +141,7 @@ namespace Teste
                     Saida[4] = Saida[4] + (volume * valor);
                     Saida[3] = Saida[3] - volume;
                     Nvendas++;
+                    C_V = C_V + histerese; // enxerga compra e venda
                 }
                 
             }
@@ -156,6 +159,8 @@ namespace Teste
             txtNVendas.Text = Nvendas.ToString();
             // Saldo total
             textBox1.Text = (cota_btc + Saida[4]).ToString();
+
+            dt_raw.Rows.Add(n_linha, valor, media_loc, C_V);// adiciona linha, valor media            
         }
         private void Finaliza()
         {
@@ -191,7 +196,7 @@ namespace Teste
             var streamReader = File.OpenText(txtArq.Text);
 
             var csvReader = new CsvReader(streamReader, csvConfig);
-
+            double cotIni = Convert.ToDouble(txtCotacao.Text);
 
             while (csvReader.Read())
             {
@@ -207,7 +212,7 @@ namespace Teste
                     i = 0;
                 }
 
-                Calculos(C_Media(V_buffer), valor, l);
+                Calculos(C_Media(V_buffer), valor, l, cotIni);
 
             }
         }
@@ -218,19 +223,24 @@ namespace Teste
 
             chart1.DataSource = dt_raw;
             chart1.Series[0].XValueMember = "Linha";
-            chart1.Series[0].YValueMembers = "Valor";
-
+            chart1.Series[0].YValueMembers = "Valor";//BTC
             chart1.Series[1].XValueMember = "Linha";
             chart1.Series[1].YValueMembers = "Media";
+            chart1.Series[2].XValueMember = "Linha";
+            chart1.Series[2].YValueMembers = "C_V";
             //
             chart1.Series[0].ChartType = SeriesChartType.Line;
-            chart1.Series[0].Color = System.Drawing.Color.DarkBlue;
+            chart1.Series[0].Color = System.Drawing.Color.DarkBlue; //BTC
             //
             chart1.Series[1].ChartType = SeriesChartType.Line;
-            chart1.Series[1].Color = System.Drawing.Color.Red;
+            chart1.Series[1].Color = System.Drawing.Color.Red; // Media
+            //
+            chart1.Series[2].ChartType = SeriesChartType.Line;
+            chart1.Series[2].Color = System.Drawing.Color.Green; // Compra e Venda
             //
             chart1.Series[0].BorderWidth = 1;
             chart1.Series[1].BorderWidth = 1;
+            chart1.Series[2].BorderWidth = 1;
             //
             chart1.ChartAreas[0].AxisY.Maximum = max_valor;
             chart1.ChartAreas[0].AxisY.Minimum = min_valor;
