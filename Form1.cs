@@ -37,7 +37,8 @@ namespace Teste
             dt_raw.Columns.Add("Linha", typeof(Int32));
             dt_raw.Columns.Add("Valor", typeof(double));
             dt_raw.Columns.Add("Media", typeof(double));
-            dt_raw.Columns.Add("C_V", typeof(double));
+            dt_raw.Columns.Add("Compra", typeof(double));
+            dt_raw.Columns.Add("Venda", typeof(double));
 
         }
 
@@ -117,7 +118,8 @@ namespace Teste
         {
             double volume = Convert.ToDouble(txtVol.Text);
             double difer = 0;
-            
+            double gCompra = C_V;
+            double gVenda = C_V;
 
             difer = media_loc - valor;
 
@@ -129,7 +131,7 @@ namespace Teste
                     Saida[4] = Saida[4] - (volume * valor);
                     Saida[3] = Saida[3] + volume;
                     Ncompras++;
-                    C_V = C_V - histerese; // enxerga compra e venda
+                    gCompra = gCompra + histerese; // enxerga compra e venda
                 }
                 
             }
@@ -141,7 +143,7 @@ namespace Teste
                     Saida[4] = Saida[4] + (volume * valor);
                     Saida[3] = Saida[3] - volume;
                     Nvendas++;
-                    C_V = C_V + histerese; // enxerga compra e venda
+                    gVenda = gVenda - histerese; // enxerga compra e venda
                 }
                 
             }
@@ -160,7 +162,7 @@ namespace Teste
             // Saldo total
             textBox1.Text = (cota_btc + Saida[4]).ToString();
 
-            dt_raw.Rows.Add(n_linha, valor, media_loc, C_V);// adiciona linha, valor media            
+            dt_raw.Rows.Add(n_linha, valor, media_loc, gCompra,gVenda);// adiciona linha, valor media            
         }
         private void Finaliza()
         {
@@ -227,7 +229,9 @@ namespace Teste
             chart1.Series[1].XValueMember = "Linha";
             chart1.Series[1].YValueMembers = "Media";
             chart1.Series[2].XValueMember = "Linha";
-            chart1.Series[2].YValueMembers = "C_V";
+            chart1.Series[2].YValueMembers = "Compra";
+            chart1.Series[3].XValueMember = "Linha";
+            chart1.Series[3].YValueMembers = "Venda";
             //
             chart1.Series[0].ChartType = SeriesChartType.Line;
             chart1.Series[0].Color = System.Drawing.Color.DarkBlue; //BTC
@@ -236,11 +240,14 @@ namespace Teste
             chart1.Series[1].Color = System.Drawing.Color.Red; // Media
             //
             chart1.Series[2].ChartType = SeriesChartType.Line;
-            chart1.Series[2].Color = System.Drawing.Color.Green; // Compra e Venda
+            chart1.Series[2].Color = System.Drawing.Color.Green; // Compra
+            chart1.Series[3].ChartType = SeriesChartType.Line;
+            chart1.Series[3].Color = System.Drawing.Color.Magenta; // Venda
             //
             chart1.Series[0].BorderWidth = 1;
             chart1.Series[1].BorderWidth = 1;
             chart1.Series[2].BorderWidth = 1;
+            chart1.Series[3].BorderWidth = 1;
             //
             chart1.ChartAreas[0].AxisY.Maximum = max_valor;
             chart1.ChartAreas[0].AxisY.Minimum = min_valor;
