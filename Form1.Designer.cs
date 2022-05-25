@@ -29,15 +29,17 @@ namespace Teste
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Btn_Arq = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLimiteInferior = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txtHiste = new System.Windows.Forms.TextBox();
@@ -93,6 +95,7 @@ namespace Teste
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -112,6 +115,9 @@ namespace Teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.txtLimiteInferior);
+            this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.txtHiste);
@@ -131,11 +137,31 @@ namespace Teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuração :";
             // 
+            // txtLimiteInferior
+            // 
+            this.txtLimiteInferior.Location = new System.Drawing.Point(629, 34);
+            this.txtLimiteInferior.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLimiteInferior.Name = "txtLimiteInferior";
+            this.txtLimiteInferior.Size = new System.Drawing.Size(41, 22);
+            this.txtLimiteInferior.TabIndex = 13;
+            this.txtLimiteInferior.Text = "1500";
+            this.txtLimiteInferior.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(599, 17);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(81, 13);
+            this.label27.TabIndex = 12;
+            this.label27.Text = "Limite Inferior:";
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label25.Location = new System.Drawing.Point(572, 34);
+            this.label25.Location = new System.Drawing.Point(506, 36);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(27, 19);
@@ -146,7 +172,7 @@ namespace Teste
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label24.Location = new System.Drawing.Point(462, 35);
+            this.label24.Location = new System.Drawing.Point(447, 35);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(20, 19);
@@ -155,7 +181,7 @@ namespace Teste
             // 
             // txtHiste
             // 
-            this.txtHiste.Location = new System.Drawing.Point(603, 32);
+            this.txtHiste.Location = new System.Drawing.Point(537, 34);
             this.txtHiste.Margin = new System.Windows.Forms.Padding(2);
             this.txtHiste.Name = "txtHiste";
             this.txtHiste.Size = new System.Drawing.Size(36, 22);
@@ -166,7 +192,7 @@ namespace Teste
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(579, 17);
+            this.label23.Location = new System.Drawing.Point(513, 19);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(60, 13);
@@ -175,7 +201,7 @@ namespace Teste
             // 
             // txt_TX
             // 
-            this.txt_TX.Location = new System.Drawing.Point(426, 34);
+            this.txt_TX.Location = new System.Drawing.Point(411, 34);
             this.txt_TX.Margin = new System.Windows.Forms.Padding(2);
             this.txt_TX.Name = "txt_TX";
             this.txt_TX.Size = new System.Drawing.Size(32, 22);
@@ -186,7 +212,7 @@ namespace Teste
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(423, 17);
+            this.label22.Location = new System.Drawing.Point(408, 17);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(95, 13);
@@ -277,7 +303,7 @@ namespace Teste
             this.txtSaldoBTCini.Name = "txtSaldoBTCini";
             this.txtSaldoBTCini.Size = new System.Drawing.Size(54, 22);
             this.txtSaldoBTCini.TabIndex = 23;
-            this.txtSaldoBTCini.Text = "0,05";
+            this.txtSaldoBTCini.Text = "0,08";
             this.txtSaldoBTCini.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtSaldoUini
@@ -307,7 +333,7 @@ namespace Teste
             this.txtVol.Name = "txtVol";
             this.txtVol.Size = new System.Drawing.Size(43, 22);
             this.txtVol.TabIndex = 20;
-            this.txtVol.Text = "0,001";
+            this.txtVol.Text = "0,004";
             this.txtVol.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCotacao
@@ -722,40 +748,51 @@ namespace Teste
             // 
             this.chart1.BorderlineWidth = 3;
             this.chart1.BorderSkin.BorderWidth = 2;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(10, 300);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Legend = "Legend1";
-            series1.Name = "BTC";
-            series1.SmartLabelStyle.CalloutLineWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Legend = "Legend1";
-            series2.Name = "Media";
-            series2.SmartLabelStyle.CalloutLineWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Compra";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Venda";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.Legend = "Legend1";
+            series5.Name = "BTC";
+            series5.SmartLabelStyle.CalloutLineWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.Legend = "Legend1";
+            series6.Name = "Media";
+            series6.SmartLabelStyle.CalloutLineWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "Compra";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Venda";
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(899, 318);
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label28.Location = new System.Drawing.Point(598, 36);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(27, 19);
+            this.label28.TabIndex = 14;
+            this.label28.Text = "U$";
             // 
             // Form1
             // 
@@ -844,6 +881,9 @@ namespace Teste
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtTXRe;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtLimiteInferior;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
     }
 }
 

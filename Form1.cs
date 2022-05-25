@@ -6,6 +6,7 @@ using CsvHelper.Configuration;
 using CsvHelper;
 using System.Data;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Math;
 
 namespace Teste
 {
@@ -25,6 +26,8 @@ namespace Teste
         int Ncompras = 0;
         int Nvendas = 0;
         int Nlinhas = 0;
+        double LimiteInferior = 0;
+
 
         public Form1()
         {
@@ -78,6 +81,7 @@ namespace Teste
         private void Atualiza()
         {
             //Atualiza valores campos
+            
             T_buffer = Convert.ToInt32(txtBuffer.Text);
             histerese = Convert.ToInt32(txtHiste.Text);
             double d2 = Convert.ToDouble(txtVol.Text);
@@ -94,6 +98,7 @@ namespace Teste
             Ncompras = 0;
             Nvendas = 0;
             Nlinhas = 0;
+            LimiteInferior = c2 - Convert.ToInt16(txtLimiteInferior.Text);
             for (int i = 0; i < T_buffer; i++)// atualiza buffer com cotação atual
             {
                 V_buffer[i] = c2;
@@ -120,33 +125,43 @@ namespace Teste
             double difer = 0;
             double gCompra = C_V;
             double gVenda = C_V;
-
+            
             difer = media_loc - valor;
-
-            if (difer > histerese) // histerese = minimo valor negociação U$
+            // se limite inferior permitir
+            if (valor > LimiteInferior)
             {
-                if (Saida[4] > 100) // Saida[4] = Saldo em U$
+
+                if (difer > histerese) // histerese = minimo valor negociação U$
                 {
-                    //Compra xx BTC por cotação atual de U$
-                    Saida[4] = Saida[4] - (volume * valor);
-                    Saida[3] = Saida[3] + volume;
-                    Ncompras++;
-                    gCompra = gCompra + histerese; // enxerga compra e venda
+
+                    if (Saida[4] > 100) // Saida[4] = Saldo em U$
+                    {
+                        //Compra xx BTC por cotação atual de U$
+                        Saida[4] = Saida[4] - (volume * valor);
+                        Saida[3] = Saida[3] + volume;
+                        Ncompras++;
+                        gCompra = gCompra + histerese; // enxerga compra e venda
+
+                    }
+
                 }
-                
+
             }
             if (difer < - histerese) // histerese = minimo valor negociação U$
             {
-                if (Saida[3] > 0.001) // Saida[4] = Saldo em U$
+
+                if (Saida[3] > 0.001) // Saida[3] = Volume
                 {
                     //Vende xx BTC por cotação atual de U$
                     Saida[4] = Saida[4] + (volume * valor);
                     Saida[3] = Saida[3] - volume;
                     Nvendas++;
                     gVenda = gVenda - histerese; // enxerga compra e venda
-                }
+
+                }            
                 
             }
+
             // Ultima Cotação
             textBox7.Text = valor.ToString();
             // Ultimo Saldo BTC cotação
@@ -173,9 +188,11 @@ namespace Teste
             max_valor = Convert.ToDouble (dt_raw.Compute("MAX([Valor])", ""));
             min_valor = Convert.ToDouble(dt_raw.Compute("MIN([Valor])", ""));
             int transac = Ncompras + Nlinhas;
+            // ex: (30 + 48) * 0.01%
             double perc_tx = transac * Convert.ToDouble(txt_TX.Text);
             txtTXRe.Text = perc_tx.ToString() + " %";
-            double rasc_sf_tx = sf - ((sf * perc_tx)/100);
+            //=E3-ABS(E3*(E4/100))
+            double rasc_sf_tx = sf - Abs(sf * (perc_tx)/100);
             txtSaldo_Taxas.Text = rasc_sf_tx.ToString();
 
             grafico(max_valor, min_valor);
